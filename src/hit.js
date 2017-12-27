@@ -10,11 +10,11 @@ const getPosition = function(direction){
   return pos[direction];
 };
 
-const isHeadHitOnBody = function(head,body){
-  return body.some((pos)=>{
-    return pos.x == head.x && pos.y == head.y;
-  });
-};
+// const isHeadHitOnBody = function(head,body){
+//   return body.some((pos)=>{
+//     return pos.x == head.x && pos.y == head.y;
+//   });
+// };
 
 const isHeadHitOnWall=function(head,wallPos){
   return head.x==wallPos || head.y==wallPos;
@@ -24,7 +24,7 @@ const checkForGameOver = function(){
   let body = snake.getBody();
   let head = snake.getHead();
   let position = getPosition(head.direction);
-  if(isHeadHitOnWall(head,position) || isHeadHitOnBody(head,body))
+  if(isHeadHitOnWall(head,position) || snake.isSnakeEatingItself())
   showGameOver();
 };
 
