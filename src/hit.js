@@ -1,22 +1,29 @@
 const getPosition = function(direction){
-  let startPos = 0;
+  let initPos = 0;
   let headWidth = 1;
   let pos = {
     east:numberOfCols-headWidth,
-    west:startPos,
-    north:startPos,
+    west:initPos,
+    north:initPos,
     south:numberOfRows-headWidth
   }
   return pos[direction];
 };
 
+const isSnakeHitOnBody = function(head,body){
+  return body.some((pos)=>{
+    return pos.x == head.x && pos.y == head.y;
+  });
+};
 
-const checkForGameOver = function(head,oldTail){
-  console.log(snake.head,snake.body);
+
+const checkForGameOver = function(){
+  let body = snake.getBody();
+  let head = snake.getHead();
   let position = getPosition(head.direction);
-  if(head.isHitOnWall(position))
+  if(head.isHitOnWall(position) || isSnakeHitOnBody(head,body))
   showGameOver();
-}
+};
 
 const showGameOver = function(){
   clearInterval(animator);
@@ -25,5 +32,6 @@ const showGameOver = function(){
 };
 
 const resetGame = function(){
-  startGame();
+  // window.location.reload();
+  startGame(); 
 };
