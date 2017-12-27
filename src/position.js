@@ -43,6 +43,12 @@ Position.prototype.getCoord=function() {
   return [this.x,this.y];
 }
 
+Position.prototype.isSnakeInRange=function(topLeft,bottomRight,headWidth){
+  let rowRange = this.x<bottomRight.x-headWidth && topLeft.x<this.x;
+  let colRange = this.y<bottomRight.y-headWidth && topLeft.y<this.y;
+  return rowRange && colRange;
+}
+
 const generateRandomPosition=function(maxX,maxY) {
   let x=generateRandomNumberBetween(0,maxX);
   let y=generateRandomNumberBetween(0,maxY);
