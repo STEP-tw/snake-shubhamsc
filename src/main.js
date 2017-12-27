@@ -12,6 +12,7 @@ const animateSnake=function() {
   paintBody(oldHead);
   unpaintSnake(oldTail);
   paintHead(head);
+  checkForGameOver(head,oldTail);
   if(head.isSameCoordAs(food)) {
     snake.grow();
     createFood(numberOfRows,numberOfCols);
