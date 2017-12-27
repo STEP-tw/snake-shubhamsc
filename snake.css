@@ -24,3 +24,9 @@
   background-color: blue;
   border-radius: 50%;
 }
+
+.gameStatus {
+  visibility: hidden;
+  text-align: center;
+  margin-top: 20px;
+}
