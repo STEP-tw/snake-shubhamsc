@@ -10,18 +10,21 @@ const getPosition = function(direction){
   return pos[direction];
 };
 
-const isSnakeHitOnBody = function(head,body){
+const isHeadHitOnBody = function(head,body){
   return body.some((pos)=>{
     return pos.x == head.x && pos.y == head.y;
   });
 };
 
+const isHeadHitOnWall=function(head,wallPos){
+  return head.x==wallPos || head.y==wallPos;
+};
 
 const checkForGameOver = function(){
   let body = snake.getBody();
   let head = snake.getHead();
   let position = getPosition(head.direction);
-  if(head.isHitOnWall(position) || isSnakeHitOnBody(head,body))
+  if(isHeadHitOnWall(head,position) || isHeadHitOnBody(head,body))
   showGameOver();
 };
 
@@ -32,6 +35,6 @@ const showGameOver = function(){
 };
 
 const resetGame = function(){
-  // window.location.reload();
-  startGame(); 
+  window.location.reload();
+  // startGame();
 };
