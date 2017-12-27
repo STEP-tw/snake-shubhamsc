@@ -43,10 +43,6 @@ Position.prototype.getCoord=function() {
   return [this.x,this.y];
 }
 
-Position.prototype.isHitOnWall=function(wallPos){
-  return this.x==wallPos || this.y==wallPos;
-}
-
 const generateRandomPosition=function(maxX,maxY) {
   let x=generateRandomNumberBetween(0,maxX);
   let y=generateRandomNumberBetween(0,maxY);
