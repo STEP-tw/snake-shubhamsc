@@ -38,21 +38,6 @@ const addKeyListener=function(snake) {
   grid.focus();
 }
 
-const createSnake=function(game) {
-  let tail=new Position(12,10,"east");
-  let body=[];
-  body.push(tail);
-  body.push(tail.next());
-  let head=tail.next().next();
-  let snake=new Snake(head,body);
-  game.addSnake(snake);
-}
-
-const createFood=function(game) {
-  let food=generateRandomPosition(game.cols,game.rows);
-  game.addFood(food);
-}
-
 const showGameOver = function(){
   clearInterval(animator);
   document.getElementsByClassName('gameStatus')[0].style.visibility = 'visible';
@@ -67,10 +52,10 @@ const startGame=function() {
   let numberOfRows=60;
   let numberOfCols=120;
   let game=new Game(numberOfRows,numberOfCols);
-  createSnake(game);
+  game.createSnake();
   drawGrids(game.rows,game.cols);
   drawSnake(game.snake);
-  createFood(game);
+  game.createFood();
   drawFood(game.food);
   addKeyListener(game.snake);
   animator=setInterval(()=>{animateSnake(game)},140);
