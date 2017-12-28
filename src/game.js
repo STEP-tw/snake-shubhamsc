@@ -28,10 +28,8 @@ Game.prototype.createFood=function() {
   this.addFood(food);
 };
 
-Game.prototype.inPlay = function(){
-  let head = this.snake.head;
-  let headWidth = 1;
+Game.prototype.isOver = function(){
   let topLeft = new Position(0,0,'east');
   let bottomRight = new Position(this.cols,this.rows,'east');
-  return head.isSnakeInRange(topLeft,bottomRight,headWidth);
+  return this.snake.isHitOnWall(topLeft,bottomRight) || this.snake.isEatingItself();
 };

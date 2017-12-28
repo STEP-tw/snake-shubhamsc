@@ -7,7 +7,7 @@ const animateSnake=function(game) {
   paintBody(oldHead);
   unpaintSnake(oldTail);
   paintHead(head);
-  if(!game.inPlay()){
+  if(game.isOver()){
     showGameOver();
   }
   if(head.isSameCoordAs(game.food)) {

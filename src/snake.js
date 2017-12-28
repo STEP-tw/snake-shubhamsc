@@ -24,9 +24,12 @@ Snake.prototype={
   turnRight:function() {
     this.head=this.head.turnRight();
   },
-  isSnakeEatingItself:function(){
+  isEatingItself:function(){
     return this.body.some((pos)=>{
       return this.head.isSameCoordAs(pos);
     });
+  },
+  isHitOnWall:function(topLeft,bottomRight){
+    return !(this.head.isInRange(topLeft,bottomRight));
   }
 }

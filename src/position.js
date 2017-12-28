@@ -43,9 +43,9 @@ Position.prototype.getCoord=function() {
   return [this.x,this.y];
 }
 
-Position.prototype.isSnakeInRange=function(topLeft,bottomRight,headWidth){
-  let rowRange = this.x<bottomRight.x-headWidth && topLeft.x<this.x;
-  let colRange = this.y<bottomRight.y-headWidth && topLeft.y<this.y;
+Position.prototype.isInRange=function(topLeft,bottomRight){
+  let rowRange = this.x<bottomRight.x-1 && topLeft.x<this.x;
+  let colRange = this.y<bottomRight.y-1 && topLeft.y<this.y;
   return rowRange && colRange;
 }
 
